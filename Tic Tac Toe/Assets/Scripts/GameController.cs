@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
 
         for (int i = 0; i < markedSpaces.Length; i++)
         {
-            markedSpaces[i] = -1;
+            markedSpaces[i] = -100;
         }
     }
 
@@ -121,5 +121,24 @@ public class GameController : MonoBehaviour
         {
             tictactoeSpaces[i].interactable = false;
         }
+    }
+
+    public void Rematch()
+    {
+        GameSetup();
+        for(int i = 0; i < winningLine.Length; i++)
+        {
+            winningLine[i].SetActive(false);
+        }
+        winnerPanel.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        Rematch();
+        xPlayersScore = 0;
+        oPlayersScore = 0;
+        xPlayersScoreText.text = "0";
+        oPlayersScoreText.text = "0";
     }
 }
