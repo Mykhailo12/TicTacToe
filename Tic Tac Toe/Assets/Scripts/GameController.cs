@@ -16,6 +16,10 @@ public class GameController : MonoBehaviour
     public Text WinnerText;
     public GameObject[] winningLine;
     public GameObject winnerPanel;
+    public int xPlayersScore;
+    public int oPlayersScore;
+    public Text xPlayersScoreText;
+    public Text oPlayersScoreText;
 
     private void Start()
     {
@@ -80,10 +84,9 @@ public class GameController : MonoBehaviour
         int s5 = markedSpaces[1] + markedSpaces[4] + markedSpaces[7];
         int s6 = markedSpaces[2] + markedSpaces[5] + markedSpaces[8];
         int s7 = markedSpaces[0] + markedSpaces[4] + markedSpaces[8];
-        int s8 = markedSpaces[0] + markedSpaces[4] + markedSpaces[6];
-        int s9 = markedSpaces[2] + markedSpaces[4] + markedSpaces[6];
+        int s8 = markedSpaces[2] + markedSpaces[4] + markedSpaces[6];
 
-        var solutions = new int[] { s1, s2, s3, s4, s5, s6, s7, s8, s9 };
+        var solutions = new int[] { s1, s2, s3, s4, s5, s6, s7, s8 };
 
         for(int i = 0; i < solutions.Length; i++)
         {
@@ -101,10 +104,14 @@ public class GameController : MonoBehaviour
 
         if (whoseTurn == 0)
         {
+            xPlayersScore++;
+            xPlayersScoreText.text = xPlayersScore.ToString();
             WinnerText.text = "Player X Wins!";
         }
         else if(whoseTurn == 1)
         {
+            oPlayersScore++;
+            oPlayersScoreText.text = oPlayersScore.ToString();
             WinnerText.text = "Player O Wins!";
         }
 
